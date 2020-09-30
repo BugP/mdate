@@ -1,0 +1,49 @@
+<div class="stui-foot clearfix">
+	<p><a href="{$maccms.path}">返回首页</a><span class="split-line"></span><a href="javascript:scroll(0, 0)">返回顶部</a></p>
+	<div class="hidden-xs">Copyright © 2011-2020 maccms. [苹果电影程序]版权所有</div>						
+	<p class="text-muted visible-xs">Copyright © 2008-2020</p>
+</div>
+<div class="hide">{$maccms.site_tj}</div>
+<script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="{$maccms.path_tpl}js/history.js"></script>
+<script type="text/javascript" src="{$maccms.path_tpl}js/hover.js"></script> 
+<script type="text/javascript">
+var Cookie = {
+  'Set': function (name, value, days) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() + days * 24 * 60 * 60 * 1000);
+    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+    document.cookie = name + "=" + encodeURIComponent(value) + ";path=/;expires=" + exp.toUTCString();
+  },
+  'Get': function (name) {
+    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+    if (arr != null) {
+      return decodeURIComponent(arr[2]);
+      return null;
+    }
+  },
+  'Del': function (name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = this.Get(name);
+    if (cval != null) {
+      document.cookie = name + "=" + encodeURIComponent(cval) + ";path=/;expires=" + exp.toUTCString();
+    }
+  }
+}
+</script>
+<script type="text/javascript">
+	$(".lazyload").lazyload({
+		effect: "fadeIn",
+		threshold: 200,
+		failurelimit: 15,
+		skip_invisible: false
+	});
+  $(".stui-close").click(function(){
+    $(".footer-fixed").slideUp('fast');
+    Cookie.Set('fixed-close',1,0.25);
+  });
+  if(Cookie.Get('fixed-close')!=1){
+    $(".footer-fixed").addClass("show");
+  }
+</script>

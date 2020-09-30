@@ -1,0 +1,36 @@
+				<section class="pc-banner clearfix">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+						    {maccms:vod num="10" level="9" order="desc" type="current" by="time"}
+						    <div class="swiper-slide">
+                                    <a href="{:mac_url_vod_detail($vo)}" target="_blank"><img src="{:mac_url_img($vo.vod_pic_slide)}" alt="{$vo.vod_name}" title="{$vo.vod_name}"><span>{$vo.vod_name}</span></a>
+                                    <div class="layer-mask"></div>
+                                </div>
+                                {/maccms:vod}
+                                </div>
+						<div class="button">
+							<div class="swiper-button-prev"></div>
+							<div class="swiper-button-next"></div>
+						</div>
+					</div>
+				</section>
+				<script type="text/javascript">
+					window.onload = function() {
+						var swiper = new Swiper('.swiper-container',{
+							autoplay: false,
+							speed: 2000,
+							autoplayDisableOnInteraction: false,
+							loop: true,
+							centeredSlides: true,
+							slidesPerView: 2,
+							paginationClickable: true,
+							prevButton: '.swiper-button-prev',
+							nextButton: '.swiper-button-next',
+							breakpoints: {
+								668: {
+									slidesPerView: 1,
+								}
+							}
+						});
+					}
+				</script> 
